@@ -60,6 +60,8 @@ area(triangle, Base, Height) ->
     Base * Height / 2.0;
 area(ellipse, Width, Height) ->
     ?PI * Width * Height;
+area(_Shape, Width, Height) when Width < 0; Height < 0 -> % Etude 3-2: Guards
+    error(invalid_dimension);
 area(Shape, _Width, _Height) ->
     error({unknown_shape, Shape}).
 
@@ -73,7 +75,10 @@ area3_test_() ->
                  {25.132741228718345, [ellipse, 2, 4]}],
     [{iolist_to_binary(io_lib:format(Format, [Width, Height, Shape, Area])),
       ?_assertMatch(Area, area(Shape, Width, Height))}
-     || {Area, [Shape, Width, Height]} <- TestCases].
+     || {Area, [Shape, Width, Height]} <- TestCases] ++
+        [{<<"Negative dimensions are invalid.">>,
+          ?_assertError(invalid_dimension, area(square, -1, 3))}].
+
 -endif.
 
 
