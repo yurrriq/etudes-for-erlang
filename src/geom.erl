@@ -5,7 +5,7 @@
 -module(geom).
 
 %% Public API.
--export([area/2, area/3]).
+-export([area/2, area/1]).
 
 
 %% Types.
@@ -78,6 +78,32 @@ area3_test_() ->
      || {Area, [Shape, Width, Height]} <- TestCases] ++
         [{<<"Negative dimensions are invalid.">>,
           ?_assertError(invalid_dimension, area(square, -1, 3))}].
+
+-endif.
+
+
+%%% ======================================== [ Etude 3-4: Tuples as Parameters ]
+
+%% @equiv area(Shape, Width, Height)
+-spec area({Shape, Width, Height}) -> Area when
+      Shape  :: shape(),
+      Width  :: number(),
+      Height :: number(),
+      Area   :: number().
+area({Shape, Width, Height}) ->
+    area(Shape, Width, Height).
+
+
+-ifdef(EUNIT).
+
+area1_test_() ->
+    Format    = "The area of a ~wx~w ~s is ~w.",
+    TestCases = [{21, {rectangle, 7, 3}},
+                 {10.5, {triangle, 7, 3}},
+                 {65.97344572538566, {ellipse, 7, 3}}],
+    [{iolist_to_binary(io_lib:format(Format, [Width, Height, Shape, Area])),
+      ?_assertMatch(Area, area(Tuple))}
+     || {Area, {Shape, Width, Height} = Tuple} <- TestCases].
 
 -endif.
 
