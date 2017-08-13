@@ -5,12 +5,25 @@
 -module(geom).
 
 %% Public API.
--export([area/2]).
+-export([area/2, area/3]).
+
+
+%% Types.
+-export_type([shape/0]).
+
+-type shape() :: rectangle
+               | triangle
+               | ellipse.
+%% A shape is a rectangle, triangle or ellipse.
 
 
 -ifdef(EUNIT).
 -include_lib("eunit/include/eunit.hrl").
 -endif.
+
+
+%% Macros.
+-define(PI, math:pi()).
 
 
 %%% ========================================== [ Etude 2-1: Writing a Function ]
@@ -31,6 +44,36 @@ area2_test_() ->
       ?_assertMatch(Area, area(Width, Height))}
      || {Area, [Width, Height]} <- TestCases].
 
+-endif.
+
+
+%%% ============================================ [ Etude 3-1: Pattern Matching ]
+
+-spec area(Shape, Width, Height) -> Area when
+      Shape  :: shape(),
+      Width  :: number(),
+      Height :: number(),
+      Area   :: number().
+area(rectangle, Width, Height) ->
+    area(Width, Height);
+area(triangle, Base, Height) ->
+    Base * Height / 2.0;
+area(ellipse, Width, Height) ->
+    ?PI * Width * Height;
+area(Shape, _Width, _Height) ->
+    error({unknown_shape, Shape}).
+
+
+-ifdef(EUNIT).
+
+area3_test_() ->
+    Format    = "The area of a ~wx~w ~s is ~w.",
+    TestCases = [{12, [rectangle, 3, 4]},
+                 {7.5, [triangle, 3, 5]},
+                 {25.132741228718345, [ellipse, 2, 4]}],
+    [{iolist_to_binary(io_lib:format(Format, [Width, Height, Shape, Area])),
+      ?_assertMatch(Area, area(Shape, Width, Height))}
+     || {Area, [Shape, Width, Height]} <- TestCases].
 -endif.
 
 
