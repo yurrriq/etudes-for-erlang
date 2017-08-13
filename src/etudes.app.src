@@ -1,0 +1,18 @@
+{application, etudes,
+ [{description, "Etudes for Erlang"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {maintainers, ["Eric Bailey"]},
+  {licenses, ["BSD-3"]},
+  {links,
+   [{"GitHub", "https://github.com/yurrriq/etudes-for-erlang"},
+    {"Book", "http://chimera.labs.oreilly.com/books/1234000000726"}
+   ]}
+ ]}.
