@@ -5,7 +5,7 @@
 -module(geom).
 
 %% Public API.
--export([area/2, area/1]).
+-export([area/2, area/1, area1/3]).
 
 
 %% Types.
@@ -64,6 +64,26 @@ area(_Shape, Width, Height) when Width < 0; Height < 0 -> % Etude 3-2: Guards
     error(invalid_dimension);
 area(Shape, _Width, _Height) ->
     error({unknown_shape, Shape}).
+
+
+%%% ================================================== [ Etude 4-1: Using case ]
+
+-spec area1(Shape, Width, Height) -> Area when
+      Shape  :: shape(),
+      Width  :: number(),
+      Height :: number(),
+      Area   :: number().
+area1(Shape, Width, Height) ->
+    case Shape of
+        rectangle ->
+            area(Width, Height);
+        triangle ->
+            Width * Height / 2.0;
+        ellipse ->
+            ?PI * Width * Height
+    end;
+area1(_Shape, Width, Height) when Width < 0; Height < 0 ->
+    error(invalid_dimension).
 
 
 -ifdef(EUNIT).
