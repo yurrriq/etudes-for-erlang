@@ -1,7 +1,7 @@
 -define(IF(Test, Then, Else), case Test of true -> Then; false -> Else end).
 
 
--ifdef(EUNIT).
+-ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
 
 -define(TEST_ETUDE(Fun, Format, Cases),

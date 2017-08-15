@@ -33,7 +33,7 @@ do_nth_root(Number, N, Guess) ->
         do_nth_root(Number, N, Next)).
 
 
--ifdef(EUNIT).
+-ifdef(TEST).
 
 nth_root_test_() ->
     ?TEST_ETUDE(fun nth_root/2,

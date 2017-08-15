@@ -28,7 +28,7 @@ raise(Base, Exponent) ->
     raise(Base, Exponent, 1).
 
 
--ifdef(EUNIT).
+-ifdef(TEST).
 
 raise_test_() ->
     ?TEST_ETUDE(fun raise/2,

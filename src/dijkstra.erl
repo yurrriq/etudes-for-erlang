@@ -23,7 +23,7 @@ gcd(M, N) ->
     gcd(M, N - M).
 
 
--ifdef(EUNIT).
+-ifdef(TEST).
 
 gcd_test_() ->
     ?TEST_ETUDE(fun gcd/2,

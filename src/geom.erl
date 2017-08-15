@@ -82,7 +82,7 @@ area1(Shape, Width, Height) ->
     end.
 
 
--ifdef(EUNIT).
+-ifdef(TEST).
 
 area3_test_() ->
     ?TEST_ETUDE(fun area/3,
@@ -108,7 +108,7 @@ area({Shape, Width, Height}) ->
     area(Shape, Width, Height).
 
 
--ifdef(EUNIT).
+-ifdef(TEST).
 
 area1_test_() ->
     ?TEST_ETUDE(fun area/1,
