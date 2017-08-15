@@ -17,9 +17,7 @@
 %% A shape is a rectangle, triangle or ellipse.
 
 
--ifdef(EUNIT).
--include_lib("eunit/include/eunit.hrl").
--endif.
+-include("etudes_util.hrl").
 
 
 %% Macros.
@@ -37,12 +35,10 @@ area(Width, Height) ->
 -ifdef(TEST).
 
 area2_test_() ->
-    Format    = "The area of a ~wx~w quadrangle is ~w.",
-    TestCases = [{12, [3, 4]},
-                 {84, [12, 7]}],
-    [{iolist_to_binary(io_lib:format(Format, [Width, Height, Area])),
-      ?_assertMatch(Area, area(Width, Height))}
-     || {Area, [Width, Height]} <- TestCases].
+    ?TEST_ETUDE(fun area/2,
+                "The area of a ~wx~w quadrangle is ~w",
+                [{12, [3, 4]},
+                 {84, [12, 7]}]).
 
 -endif.
 
@@ -89,14 +85,12 @@ area1(Shape, Width, Height) ->
 -ifdef(EUNIT).
 
 area3_test_() ->
-    Format    = "The area of a ~wx~w ~s is ~w.",
-    TestCases = [{12, [rectangle, 3, 4]},
+    ?TEST_ETUDE(fun area/3,
+                "The area of a ~s (~wx~w) is ~w",
+                [{12, [rectangle, 3, 4]},
                  {7.5, [triangle, 3, 5]},
-                 {25.132741228718345, [ellipse, 2, 4]}],
-    [{iolist_to_binary(io_lib:format(Format, [Width, Height, Shape, Area])),
-      ?_assertMatch(Area, area(Shape, Width, Height))}
-     || {Area, [Shape, Width, Height]} <- TestCases] ++
-        [{<<"Negative dimensions are invalid.">>,
+                 {25.132741228718345, [ellipse, 2, 4]}]) ++
+        [{<<"Negative dimensions are invalid">>,
           ?_assertError(invalid_dimension, area(square, -1, 3))}].
 
 -endif.
@@ -117,13 +111,11 @@ area({Shape, Width, Height}) ->
 -ifdef(EUNIT).
 
 area1_test_() ->
-    Format    = "The area of a ~wx~w ~s is ~w.",
-    TestCases = [{21, {rectangle, 7, 3}},
-                 {10.5, {triangle, 7, 3}},
-                 {65.97344572538566, {ellipse, 7, 3}}],
-    [{iolist_to_binary(io_lib:format(Format, [Width, Height, Shape, Area])),
-      ?_assertMatch(Area, area(Tuple))}
-     || {Area, {Shape, Width, Height} = Tuple} <- TestCases].
+    ?TEST_ETUDE(fun area/1,
+                "area(~w) = ~w",
+                [{21, [{rectangle, 7, 3}]},
+                 {10.5, [{triangle, 7, 3}]},
+                 {65.97344572538566, [{ellipse, 7, 3}]}]).
 
 -endif.
 

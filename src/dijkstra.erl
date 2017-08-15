@@ -8,9 +8,7 @@
 -export([gcd/2]).
 
 
--ifdef(EUNIT).
--include_lib("eunit/include/eunit.hrl").
--endif.
+-include("etudes_util.hrl").
 
 
 %%% =================================================== [ Etude 4-2: Recursion ]
@@ -28,14 +26,12 @@ gcd(M, N) ->
 -ifdef(EUNIT).
 
 gcd_test_() ->
-    Format    = "The GCD of ~B and ~B is ~B.",
-    TestCases = [{4, [12, 8]},
+    ?TEST_ETUDE(fun gcd/2,
+                "The GCD of ~B and ~B is ~B",
+                [{4, [12, 8]},
                  {7, [14, 21]},
                  {1, [125, 46]},
-                 {12, [120, 36]}],
-    [ {iolist_to_binary(io_lib:format(Format, [M, N, GCD])),
-       ?_assertMatch(GCD, gcd(M, N))}
-     || {GCD, [M, N]} <- TestCases].
+                 {12, [120, 36]}]).
 
 -endif.
 
