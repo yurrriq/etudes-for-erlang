@@ -25,7 +25,7 @@ raise(Base, 1) ->
 raise(Base, Exponent) when Exponent < 0 ->
     1.0 / raise(Base, -Exponent);
 raise(Base, Exponent) ->
-    Base * raise(Base, Exponent - 1).
+    raise(Base, Exponent, 1).
 
 
 -ifdef(EUNIT).
@@ -40,5 +40,14 @@ raise_test_() ->
                  {0.125, [2, -3]}]).
 
 -endif.
+
+
+%%% ========================== [ Etude 4-4: Tail Recursion with an Accumulator ]
+
+raise(_Base, 0, Accumulator) ->
+    Accumulator;
+raise(Base, Exponent, Accumulator) ->
+    raise(Base, Exponent - 1, Base * Accumulator).
+
 
 %%% ==================================================================== [ EOF ]
