@@ -62,6 +62,23 @@ area(Shape, _Width, _Height) ->
     error({unknown_shape, Shape}).
 
 
+-ifdef(TEST).
+
+area3_test_() ->
+    ?TEST_ETUDE(fun area/3,
+                "The area of a ~s (~wx~w) is ~w",
+                [{12, [rectangle, 3, 4]},
+                 {7.5, [triangle, 3, 5]},
+                 {25.132741228718345, [ellipse, 2, 4]}]) ++
+        [{<<"Negative dimensions are invalid">>,
+          ?_assertError(invalid_dimension, area(square, -1, 3))},
+         {<<"A shield toad is not a shape">>,
+          ?_assertError({unknown_shape, shield_toad},
+                        area(shield_toad, 42, 42))}].
+
+-endif.
+
+
 %%% ================================================== [ Etude 4-1: Using case ]
 
 -spec area1(Shape, Width, Height) -> Area when
@@ -84,14 +101,14 @@ area1(Shape, Width, Height) ->
 
 -ifdef(TEST).
 
-area3_test_() ->
-    ?TEST_ETUDE(fun area/3,
+area13_test_() ->
+    ?TEST_ETUDE(fun area1/3,
                 "The area of a ~s (~wx~w) is ~w",
                 [{12, [rectangle, 3, 4]},
                  {7.5, [triangle, 3, 5]},
                  {25.132741228718345, [ellipse, 2, 4]}]) ++
         [{<<"Negative dimensions are invalid">>,
-          ?_assertError(invalid_dimension, area(square, -1, 3))}].
+          ?_assertError(invalid_dimension, area1(square, -1, 3))}].
 
 -endif.
 
