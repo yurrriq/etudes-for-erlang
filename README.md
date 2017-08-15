@@ -1,6 +1,6 @@
 # etudes
 
-*Working through [Études for Erlang][book]
+*Working through [Études for Erlang][book]*
 
 
 <!-- Named Links -->
