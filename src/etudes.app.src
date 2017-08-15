@@ -10,7 +10,7 @@
   {modules, []},
 
   {maintainers, ["Eric Bailey"]},
-  {licenses, ["BSD-3"]},
+  {licenses, ["Unlicense"]},
   {links,
    [{"GitHub", "https://github.com/yurrriq/etudes-for-erlang"},
     {"Book", "http://chimera.labs.oreilly.com/books/1234000000726"}
