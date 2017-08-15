@@ -16,7 +16,9 @@
 
 %%% ============================ [ Etude 4-5: Recursion with a Helper Function ]
 
-%% @doc Compute the `N'th root of `Number', using the Newton-Raphson method.
+%% @doc Compute the `N'th root of `Number', using the
+%% <a href="https://en.wikipedia.org/wiki/Newton%27s_method">Newton-Raphson
+%% method</a>.
 -spec nth_root(Number :: number(), N :: integer()) -> NthRoot :: number().
 nth_root(Number, N) ->
     Guess = Number / 2.0,

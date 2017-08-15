@@ -5,7 +5,7 @@
 -module(geom).
 
 %% Public API.
--export([area/2, area/1, area1/3]).
+-export([area/2, area/3, area/1, area1/3]).
 
 
 %% Types.
@@ -45,6 +45,7 @@ area2_test_() ->
 
 %%% ============================================ [ Etude 3-1: Pattern Matching ]
 
+%% @doc Compute the area of a given `Width' by `Height' `Shape'.
 -spec area(Shape, Width, Height) -> Area when
       Shape  :: shape(),
       Width  :: number(),
@@ -81,6 +82,8 @@ area3_test_() ->
 
 %%% ================================================== [ Etude 4-1: Using case ]
 
+%% @equiv area(Shape, Width, Height)
+%% @doc {@link area/3}, implemented with `case' instead of guards.
 -spec area1(Shape, Width, Height) -> Area when
       Shape  :: shape(),
       Width  :: number(),
