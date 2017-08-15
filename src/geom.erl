@@ -73,6 +73,8 @@ area(Shape, _Width, _Height) ->
       Width  :: number(),
       Height :: number(),
       Area   :: number().
+area1(_Shape, Width, Height) when Width < 0; Height < 0 ->
+    error(invalid_dimension);
 area1(Shape, Width, Height) ->
     case Shape of
         rectangle ->
@@ -81,9 +83,7 @@ area1(Shape, Width, Height) ->
             Width * Height / 2.0;
         ellipse ->
             ?PI * Width * Height
-    end;
-area1(_Shape, Width, Height) when Width < 0; Height < 0 ->
-    error(invalid_dimension).
+    end.
 
 
 -ifdef(EUNIT).
