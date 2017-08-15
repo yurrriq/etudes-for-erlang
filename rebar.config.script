@@ -1,8 +1,11 @@
 %% -*- mode: erlang; flycheck-mode: nil -*-
-case os:getenv("TRAVIS") of
-    "true" ->
+case {os:getenv("TRAVIS"),os:getenv("TRAVIS_OTP_RELEASE")} of
+    {"true", "20.0"} ->
         JobId = os:getenv("TRAVIS_JOB_ID"),
-        lists:keystore(coveralls_service_job_id, 1, CONFIG,
-                       {coveralls_service_job_id, JobId});
+        Config1 = lists:keystore(coveralls_service_job_id, 1, CONFIG,
+                                 {coveralls_service_job_id, JobId}),
+        lists:keystore(provider_hooks, 1, Config1,
+                       {provider_hooks,
+                        [{post, [{eunit, {coveralls, send}}]}]});
     _ -> CONFIG
 end.
