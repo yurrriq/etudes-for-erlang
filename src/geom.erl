@@ -51,14 +51,14 @@ area2_test_() ->
       Width  :: number(),
       Height :: number(),
       Area   :: number().
+area(_Shape, Width, Height) when Width < 0; Height < 0 -> % Etude 3-2: Guards
+    error(invalid_dimension);
 area(rectangle, Width, Height) ->
     area(Width, Height);
 area(triangle, Base, Height) ->
     Base * Height / 2.0;
 area(ellipse, Width, Height) ->
     ?PI * Width * Height;
-area(_Shape, Width, Height) when Width < 0; Height < 0 -> % Etude 3-2: Guards
-    error(invalid_dimension);
 area(Shape, _Width, _Height) ->
     error({unknown_shape, Shape}).
 
