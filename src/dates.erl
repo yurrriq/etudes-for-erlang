@@ -16,12 +16,33 @@
 -spec date_parts(String :: string()) -> Parts :: [integer()].
 date_parts(String) ->
     [case string:to_integer(Part) of
-         {error, Reason} ->
-             error(Reason);
+         {error, no_integer} ->
+             error(no_integer);
          {Int, _Rest} ->
              Int
      end
      || Part <- re:split(String, "-", [{return, list}])].
+
+
+-ifdef(TEST).
+
+date_parts_test_() ->
+    ?TEST_ETUDE(fun date_parts/1,
+                "The date parts of \"~ts\" are ~w",
+                [{[2012,12,31], ["2012-12-31"]},
+                 {[2013,12,31], ["2013-12-31"]},
+                 {[2012,2,5], ["2012-02-05"]},
+                 {[2013,2,5], ["2013-02-05"]},
+                 {[1900,3,1], ["1900-03-01"]},
+                 {[2000,3,1], ["2000-03-01"]},
+                 {[2013,1,1], ["2013-01-01"]}]) ++
+        [{<<"\"man-of-war\" is not a string in"
+            "ISO date format (\"yyyy-mm-dd\")">>,
+          ?_assertError(Reason, date_parts(String))}
+         || {Reason, String} <- [{no_integer, "man-of-war"},
+                                 {badarg, 20170821}]].
+
+-endif.
 
 
 %%% ============================== [ Etude 6-3: Accumulating the Sum of a List ]
