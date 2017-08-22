@@ -2,7 +2,7 @@
 
 # etudes #
 
-__Version:__ 0.0.1
+__Version:__ 0.6.3.1
 
 __Authors:__ Eric Bailey.
 
