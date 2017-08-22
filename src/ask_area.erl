@@ -7,8 +7,6 @@
 %% Public API.
 -export([area/0]).
 
--include("etudes_util.hrl").
-
 
 %%% ============================================ [ Etude 5-1: Validating Input ]
 

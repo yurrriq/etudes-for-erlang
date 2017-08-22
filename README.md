@@ -23,6 +23,7 @@ __Authors:__ Eric Bailey.
 
 <table width="100%" border="0" summary="list of modules">
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/ask_area.md" class="module">ask_area</a></td></tr>
+<tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/dates.md" class="module">dates</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/dijkstra.md" class="module">dijkstra</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/geom.md" class="module">geom</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/powers.md" class="module">powers</a></td></tr>
