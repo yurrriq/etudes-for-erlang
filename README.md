@@ -2,9 +2,9 @@
 
 # etudes #
 
-Copyright (c) 2017 Eric Bailey.
-
 __Version:__ 0.0.1
+
+__Authors:__ Eric Bailey.
 
 [![Build Status][Travis badge]][Travis link]
 [![Coverage Status][Coveralls badge]][Coveralls link]

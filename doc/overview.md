@@ -1,5 +1,5 @@
-@copyright 2017 Eric Bailey.
 @title etudes
+@author Eric Bailey
 @version 0.0.1
 
 @doc
