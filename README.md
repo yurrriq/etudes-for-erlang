@@ -27,5 +27,6 @@ __Authors:__ Eric Bailey.
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/dijkstra.md" class="module">dijkstra</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/geom.md" class="module">geom</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/powers.md" class="module">powers</a></td></tr>
-<tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/roots.md" class="module">roots</a></td></tr></table>
+<tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/roots.md" class="module">roots</a></td></tr>
+<tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/stats.md" class="module">stats</a></td></tr></table>
 
