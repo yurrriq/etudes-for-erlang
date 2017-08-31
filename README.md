@@ -2,7 +2,7 @@
 
 # etudes #
 
-__Version:__ 0.6.3.1
+__Version:__ 0.6.4.1
 
 __Authors:__ Eric Bailey.
 
@@ -28,5 +28,6 @@ __Authors:__ Eric Bailey.
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/geom.md" class="module">geom</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/powers.md" class="module">powers</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/roots.md" class="module">roots</a></td></tr>
-<tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/stats.md" class="module">stats</a></td></tr></table>
+<tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/stats.md" class="module">stats</a></td></tr>
+<tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/teeth.md" class="module">teeth</a></td></tr></table>
 
