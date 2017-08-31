@@ -9,12 +9,18 @@
 
 
 %% Types.
--export_type([pocket_depth/0]).
+-export_type([pocket_depth/0, missing_depth/0, depth_measurements/0, tooth/0]).
 
--type pocket_depth() :: [0] |
-                        [ non_neg_integer() ].
+-type pocket_depth() :: missing_depth() |
+                        depth_measurements().
 %% The depth in millimeters of a pocket, i.e. six measurements around a tooth.
 %% If tooth is missing, `[0]'.
+
+-type missing_depth() :: [0].
+
+-type depth_measurements() :: [pos_integer()].
+
+-type tooth() :: 1..32.
 
 
 -include("etudes_util.hrl").
@@ -23,21 +29,21 @@
 %%% ============================================== [ Etude 6-4: Lists of Lists ]
 
 %% @doc Given a list of `PocketDepths', return the list of `ProblemTeeth'.
--spec alert(PocketDepths) -> ProblemTeeth when
-      PocketDepths :: [pocket_depth()],
-      ProblemTeeth :: [non_neg_integer()].
+%% A tooth is _problematic_ iff any pocket measurement is `>= 4'.
+-spec alert(PocketDepths :: [pocket_depth()]) -> ProblemTeeth :: [tooth()].
 alert(PocketDepths) ->
     {_, NeedAttention} = lists:foldl(fun do_alert/2, {1, []}, PocketDepths),
     lists:reverse(NeedAttention).
+
 
 %% @hidden
 -spec do_alert(Measurements, {ToothNumber, ProblemTeeth}) ->
                       {NextToothNumber, NewProblemTeeth} when
       Measurements    :: pocket_depth(),
-      ToothNumber     :: non_neg_integer(),
-      ProblemTeeth    :: [non_neg_integer()],
-      NextToothNumber :: non_neg_integer(),
-      NewProblemTeeth :: [non_neg_integer()].
+      ToothNumber     :: tooth() | 33,
+      ProblemTeeth    :: [tooth()],
+      NextToothNumber :: tooth(),
+      NewProblemTeeth :: [tooth()].
 do_alert(Measurements, {ToothNumber, NeedAttention})
   when [] == Measurements; [0] == Measurements ->
     {ToothNumber + 1, NeedAttention};
