@@ -2,7 +2,7 @@
 
 # etudes #
 
-__Version:__ 0.6.5.6
+__Version:__ 0.7.1.6
 
 __Authors:__ Eric Bailey.
 
@@ -23,6 +23,7 @@ __Authors:__ Eric Bailey.
 
 <table width="100%" border="0" summary="list of modules">
 <tr><td><a href="ask_area.md" class="module">ask_area</a></td></tr>
+<tr><td><a href="calculus.md" class="module">calculus</a></td></tr>
 <tr><td><a href="dates.md" class="module">dates</a></td></tr>
 <tr><td><a href="dijkstra.md" class="module">dijkstra</a></td></tr>
 <tr><td><a href="geom.md" class="module">geom</a></td></tr>
