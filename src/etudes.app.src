@@ -1,6 +1,6 @@
 {application, etudes,
  [{description, "Etudes for Erlang"},
-  {vsn, "0.6.4.4"},
+  {vsn, "0.6.5.5"},
   {registered, []},
   {applications, [kernel, stdlib]},
 
