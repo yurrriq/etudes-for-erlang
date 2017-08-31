@@ -72,7 +72,7 @@ range(Numbers) ->
 range_test_() ->
     ?TEST_ETUDE(fun range/1,
                 "The range of ~p is ~p",
-                [{[-17,8], [[4,1,7,-17,8,2,5]]}]) ++
+                [{{-17,8}, [[4,1,7,-17,8,2,5]]}]) ++
         [{<<"There does not exist a range of the empty list">>,
           ?_assertError(function_clause, range([]))}].
 
