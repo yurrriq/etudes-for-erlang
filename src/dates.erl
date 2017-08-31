@@ -1,5 +1,5 @@
 %%% ============================================================== [ dates.erl ]
-%%% @doc Etudes for Erlang
+%%% @doc Etudes for Erlang: 5-2, 6-3
 %%% @end
 %%% ==================================================================== [ EOH ]
 -module(dates).
@@ -13,6 +13,11 @@
 
 %%% ========================================= [ Etude 5-2: Using the re Module ]
 
+
+%% @doc Given a `String' of the form "YYYY-MM-DD" return the date `Parts'.
+%% ```
+%% [Year, Month, Day] = Parts.
+%% '''
 -spec date_parts(String :: string()) -> Parts :: [integer()].
 date_parts(String) ->
     [case string:to_integer(Part) of
@@ -26,6 +31,7 @@ date_parts(String) ->
 
 -ifdef(TEST).
 
+%% @hidden
 date_parts_test_() ->
     ?TEST_ETUDE(fun date_parts/1,
                 "The date parts of \"~ts\" are ~w",
@@ -47,6 +53,9 @@ date_parts_test_() ->
 
 %%% ============================== [ Etude 6-3: Accumulating the Sum of a List ]
 
+%% @doc Given a `String' of the form "YYYY-MM-DD" return the `JulianDate'.
+%% @see date_parts/1
+-spec julian(String :: string()) -> JulianDate :: non_neg_integer().
 julian(String) ->
     [Year, Month, Day] = date_parts(String),
     Day + do_julian(Year, Month - 1, 0).
@@ -54,6 +63,7 @@ julian(String) ->
 
 -ifdef(TEST).
 
+%% @hidden
 julian_test_() ->
     ?TEST_ETUDE(fun julian/1,
                 "The Julian date of \"~ts\" is ~B",
@@ -71,6 +81,7 @@ julian_test_() ->
 %%% ========================================================== [ Private Parts ]
 
 %% NOTE: I can't, in good conscience, implement julian/5 as suggested...
+%% @hidden
 do_julian(_Year, 0, JulianDate) ->
     JulianDate;
 do_julian(Year, Month, JulianDate) ->

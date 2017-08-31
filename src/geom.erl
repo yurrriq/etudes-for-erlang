@@ -1,5 +1,5 @@
 %%% =============================================================== [ geom.erl ]
-%%% @doc Etudes for Erlang
+%%% @doc Etudes for Erlang: 2-1, 3-1, 3-2, 3-4, 4-1
 %%% @end
 %%% ==================================================================== [ EOH ]
 -module(geom).
@@ -34,6 +34,7 @@ area(Width, Height) ->
 
 -ifdef(TEST).
 
+%% @hidden
 area2_test_() ->
     ?TEST_ETUDE(fun area/2,
                 "The area of a ~wx~w quadrangle is ~w",
@@ -46,6 +47,8 @@ area2_test_() ->
 %%% ============================================ [ Etude 3-1: Pattern Matching ]
 
 %% @doc Compute the area of a given `Width' by `Height' `Shape'.
+%% @equiv if rectangle =:= Shape -> area(Width, Height) end
+%% @see area/2
 -spec area(Shape, Width, Height) -> Area when
       Shape  :: shape(),
       Width  :: number(),
@@ -65,6 +68,7 @@ area(Shape, _Width, _Height) ->
 
 -ifdef(TEST).
 
+%% @hidden
 area3_test_() ->
     ?TEST_ETUDE(fun area/3,
                 "The area of a ~s (~wx~w) is ~w",
@@ -76,6 +80,31 @@ area3_test_() ->
          {<<"A shield toad is not a shape">>,
           ?_assertError({unknown_shape, shield_toad},
                         area(shield_toad, 42, 42))}].
+
+-endif.
+
+
+%%% ======================================== [ Etude 3-4: Tuples as Parameters ]
+
+%% @equiv area(Shape, Width, Height)
+-spec area({Shape, Width, Height}) -> Area when
+      Shape  :: shape(),
+      Width  :: number(),
+      Height :: number(),
+      Area   :: number().
+area({Shape, Width, Height}) ->
+    area(Shape, Width, Height).
+
+
+-ifdef(TEST).
+
+%% @hidden
+area1_test_() ->
+    ?TEST_ETUDE(fun area/1,
+                "area(~w) = ~w",
+                [{21, [{rectangle, 7, 3}]},
+                 {10.5, [{triangle, 7, 3}]},
+                 {65.97344572538566, [{ellipse, 7, 3}]}]).
 
 -endif.
 
@@ -104,6 +133,7 @@ area1(Shape, Width, Height) ->
 
 -ifdef(TEST).
 
+%% @hidden
 area13_test_() ->
     ?TEST_ETUDE(fun area1/3,
                 "The area of a ~s (~wx~w) is ~w",
@@ -112,30 +142,6 @@ area13_test_() ->
                  {25.132741228718345, [ellipse, 2, 4]}]) ++
         [{<<"Negative dimensions are invalid">>,
           ?_assertError(invalid_dimension, area1(square, -1, 3))}].
-
--endif.
-
-
-%%% ======================================== [ Etude 3-4: Tuples as Parameters ]
-
-%% @equiv area(Shape, Width, Height)
--spec area({Shape, Width, Height}) -> Area when
-      Shape  :: shape(),
-      Width  :: number(),
-      Height :: number(),
-      Area   :: number().
-area({Shape, Width, Height}) ->
-    area(Shape, Width, Height).
-
-
--ifdef(TEST).
-
-area1_test_() ->
-    ?TEST_ETUDE(fun area/1,
-                "area(~w) = ~w",
-                [{21, [{rectangle, 7, 3}]},
-                 {10.5, [{triangle, 7, 3}]},
-                 {65.97344572538566, [{ellipse, 7, 3}]}]).
 
 -endif.
 

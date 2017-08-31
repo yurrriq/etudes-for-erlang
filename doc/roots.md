@@ -5,27 +5,21 @@
 * [Function Index](#index)
 * [Function Details](#functions)
 
-Etudes for Erlang.
+Etudes for Erlang: 4-5.
 
 <a name="index"></a>
 
 ## Function Index ##
 
 
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#do_nth_root-3">do_nth_root/3*</a></td><td></td></tr><tr><td valign="top"><a href="#nth_root-2">nth_root/2</a></td><td>Compute the <code>N</code>th root of <code>Number</code>, using the
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#nth_root-2">nth_root/2</a></td><td>Compute the <code>N</code>th root of <code>Number</code>, using the
 <a href="https://en.wikipedia.org/wiki/Newton%27s_method">Newton-Raphson
-method</a>.</td></tr><tr><td valign="top"><a href="#nth_root_test_-0">nth_root_test_/0*</a></td><td></td></tr></table>
+method</a>.</td></tr></table>
 
 
 <a name="functions"></a>
 
 ## Function Details ##
-
-<a name="do_nth_root-3"></a>
-
-### do_nth_root/3 * ###
-
-`do_nth_root(Number, N, Guess) -> any()`
 
 <a name="nth_root-2"></a>
 
@@ -39,10 +33,4 @@ nth_root(Number::number(), N::integer()) -&gt; NthRoot::number()
 Compute the `N`th root of `Number`, using the
 [Newton-Raphson
 method](https://en.wikipedia.org/wiki/Newton%27s_method).
-
-<a name="nth_root_test_-0"></a>
-
-### nth_root_test_/0 * ###
-
-`nth_root_test_() -> any()`
 

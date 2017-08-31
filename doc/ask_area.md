@@ -5,7 +5,7 @@
 * [Function Index](#index)
 * [Function Details](#functions)
 
-Etudes for Erlang.
+Etudes for Erlang: 5-1.
 
 <a name="index"></a>
 

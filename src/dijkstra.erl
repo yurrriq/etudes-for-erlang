@@ -1,5 +1,5 @@
 %%% =========================================================== [ dijkstra.erl ]
-%%% @doc Etudes for Erlang
+%%% @doc Etudes for Erlang: 4-2
 %%% @end
 %%% ==================================================================== [ EOH ]
 -module(dijkstra).
@@ -25,6 +25,7 @@ gcd(M, N) ->
 
 -ifdef(TEST).
 
+%% @hidden
 gcd_test_() ->
     ?TEST_ETUDE(fun gcd/2,
                 "The GCD of ~B and ~B is ~B",

@@ -1,5 +1,5 @@
 %%% ============================================================== [ roots.erl ]
-%%% @doc Etudes for Erlang
+%%% @doc Etudes for Erlang: 4-5
 %%% @end
 %%% ==================================================================== [ EOH ]
 -module(roots).
@@ -24,7 +24,7 @@ nth_root(Number, N) ->
     Guess = Number / 2.0,
     do_nth_root(Number, N, Guess).
 
-
+%% @hidden
 do_nth_root(Number, N, Guess) ->
     io:format("Current guess is ~p~n", [Guess]),
     F      = powers:raise(Guess, N) - Number,
@@ -37,6 +37,7 @@ do_nth_root(Number, N, Guess) ->
 
 -ifdef(TEST).
 
+%% @hidden
 nth_root_test_() ->
     ?TEST_ETUDE(fun nth_root/2,
                 "~w's ~wth root is ~w",

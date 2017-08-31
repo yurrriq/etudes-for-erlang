@@ -6,7 +6,7 @@
 * [Function Index](#index)
 * [Function Details](#functions)
 
-Etudes for Erlang.
+Etudes for Erlang: 2-1, 3-1, 3-2, 3-4, 4-1.
 
 <a name="types"></a>
 
@@ -29,7 +29,7 @@ shape() = rectangle | triangle | ellipse
 ## Function Index ##
 
 
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#area-1">area/1</a></td><td>Equivalent to <a href="#area-3"><tt>area(Shape, Width, Height)</tt></a>.</td></tr><tr><td valign="top"><a href="#area-2">area/2</a></td><td>Compute the area of a quadrangle from a given <code>Width</code> and <code>Height</code>.</td></tr><tr><td valign="top"><a href="#area-3">area/3</a></td><td>Compute the area of a given <code>Width</code> by <code>Height</code> <code>Shape</code>.</td></tr><tr><td valign="top"><a href="#area1-3">area1/3</a></td><td><a href="#area-3"><code>area/3</code></a>, implemented with <code>case</code> instead of guards.</td></tr><tr><td valign="top"><a href="#area13_test_-0">area13_test_/0*</a></td><td></td></tr><tr><td valign="top"><a href="#area1_test_-0">area1_test_/0*</a></td><td></td></tr><tr><td valign="top"><a href="#area2_test_-0">area2_test_/0*</a></td><td></td></tr><tr><td valign="top"><a href="#area3_test_-0">area3_test_/0*</a></td><td></td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#area-1">area/1</a></td><td>Equivalent to <a href="#area-3"><tt>area(Shape, Width, Height)</tt></a>.</td></tr><tr><td valign="top"><a href="#area-2">area/2</a></td><td>Compute the area of a quadrangle from a given <code>Width</code> and <code>Height</code>.</td></tr><tr><td valign="top"><a href="#area-3">area/3</a></td><td>Compute the area of a given <code>Width</code> by <code>Height</code> <code>Shape</code>.</td></tr><tr><td valign="top"><a href="#area1-3">area1/3</a></td><td><a href="#area-3"><code>area/3</code></a>, implemented with <code>case</code> instead of guards.</td></tr></table>
 
 
 <a name="functions"></a>
@@ -69,7 +69,11 @@ area(Shape, Width, Height) -&gt; Area
 
 <ul class="definitions"><li><code>Shape = <a href="#type-shape">shape()</a></code></li><li><code>Width = number()</code></li><li><code>Height = number()</code></li><li><code>Area = number()</code></li></ul>
 
+Equivalent to `if rectangle =:= Shape -> area(Width, Height) end`.
+
 Compute the area of a given `Width` by `Height` `Shape`.
+
+__See also:__ [area/2](#area-2).
 
 <a name="area1-3"></a>
 
@@ -84,28 +88,4 @@ area1(Shape, Width, Height) -&gt; Area
 Equivalent to [`area(Shape, Width, Height)`](#area-3).
 
 [`area/3`](#area-3), implemented with `case` instead of guards.
-
-<a name="area13_test_-0"></a>
-
-### area13_test_/0 * ###
-
-`area13_test_() -> any()`
-
-<a name="area1_test_-0"></a>
-
-### area1_test_/0 * ###
-
-`area1_test_() -> any()`
-
-<a name="area2_test_-0"></a>
-
-### area2_test_/0 * ###
-
-`area2_test_() -> any()`
-
-<a name="area3_test_-0"></a>
-
-### area3_test_/0 * ###
-
-`area3_test_() -> any()`
 
