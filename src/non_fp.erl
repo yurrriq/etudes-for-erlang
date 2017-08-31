@@ -12,8 +12,8 @@
 %% Types.
 -export_type([tooth_presence/0]).
 
--type tooth_presence() :: $T |
-                          $F.
+-type tooth_presence() :: 84 |
+                          70.
 %% `$T' if present, otherwise `$F'.
 
 
