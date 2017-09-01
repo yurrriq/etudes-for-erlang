@@ -5,14 +5,14 @@
 * [Function Index](#index)
 * [Function Details](#functions)
 
-Etudes for Erlang: 6-1, 6-2.
+Etudes for Erlang: 6-1, 6-2, 7-3.
 
 <a name="index"></a>
 
 ## Function Index ##
 
 
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#do_maximum-2">do_maximum/2*</a></td><td>Tail-recursive implementation of <a href="#maximum-1"><code>maximum/1</code></a>.</td></tr><tr><td valign="top"><a href="#do_minimum-2">do_minimum/2*</a></td><td>Tail-recursive implementation of <a href="#minimum-1"><code>minimum/1</code></a>.</td></tr><tr><td valign="top"><a href="#maximum-1">maximum/1</a></td><td>Return the greatest number in <code>Numbers</code>.</td></tr><tr><td valign="top"><a href="#minimum-1">minimum/1</a></td><td>Return the smallest number in <code>Numbers</code>.</td></tr><tr><td valign="top"><a href="#range-1">range/1</a></td><td>Equivalent to <tt>{minimum(Numbers), maximum(Numbers)}</tt>.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#do_maximum-2">do_maximum/2*</a></td><td>Tail-recursive implementation of <a href="#maximum-1"><code>maximum/1</code></a>.</td></tr><tr><td valign="top"><a href="#do_minimum-2">do_minimum/2*</a></td><td>Tail-recursive implementation of <a href="#minimum-1"><code>minimum/1</code></a>.</td></tr><tr><td valign="top"><a href="#maximum-1">maximum/1</a></td><td>Return the greatest number in <code>Numbers</code>.</td></tr><tr><td valign="top"><a href="#mean-1">mean/1</a></td><td>Compute the <em>mean</em> of a <code>List</code> of numbers.</td></tr><tr><td valign="top"><a href="#minimum-1">minimum/1</a></td><td>Return the smallest number in <code>Numbers</code>.</td></tr><tr><td valign="top"><a href="#range-1">range/1</a></td><td>Equivalent to <tt>{minimum(Numbers), maximum(Numbers)}</tt>.</td></tr><tr><td valign="top"><a href="#stdv-1">stdv/1</a></td><td>Compute the <em>standard derivation</em> of a <code>List</code> of numbers.</td></tr></table>
 
 
 <a name="functions"></a>
@@ -56,6 +56,19 @@ Equivalent to [`lists:max(Numbers)`](lists.md#max-1).
 
 Return the greatest number in `Numbers`.
 
+<a name="mean-1"></a>
+
+### mean/1 ###
+
+<pre><code>
+mean(List::[number(), ...]) -&gt; Mean::float()
+</code></pre>
+<br />
+
+Equivalent to `lists:sum(List) / length(List)`.
+
+Compute the _mean_ of a `List` of numbers.
+
 <a name="minimum-1"></a>
 
 ### minimum/1 ###
@@ -82,4 +95,15 @@ range(Numbers) -&gt; {Minimum, Maximum}
 Equivalent to `{minimum(Numbers), maximum(Numbers)}`.
 
 __See also:__ [maximum/1](#maximum-1), [minimum/1](#minimum-1).
+
+<a name="stdv-1"></a>
+
+### stdv/1 ###
+
+<pre><code>
+stdv(List::[number(), ...]) -&gt; StandardDeviation::float()
+</code></pre>
+<br />
+
+Compute the _standard derivation_ of a `List` of numbers.
 

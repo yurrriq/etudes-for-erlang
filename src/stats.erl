@@ -1,11 +1,11 @@
 %%% ============================================================== [ stats.erl ]
-%%% @doc Etudes for Erlang: 6-1, 6-2
+%%% @doc Etudes for Erlang: 6-1, 6-2, 7-3
 %%% @end
 %%% ==================================================================== [ EOH ]
 -module(stats).
 
 %% Public API.
--export([minimum/1, maximum/1, range/1]).
+-export([minimum/1, maximum/1, range/1, mean/1, stdv/1]).
 
 
 -include("etudes_util.hrl").
@@ -79,6 +79,45 @@ range_test_() ->
 -endif.
 
 
+%%% ========================================= [ Etude 7-3: Using lists:foldl/3 ]
+
+%% @doc Compute the <em>mean</em> of a `List' of numbers.
+%% @equiv lists:sum(List) / length(List)
+-spec mean(List :: [number(),...]) -> Mean :: float().
+mean(List) ->
+    sum(List) / length(List).
+
+
+-ifdef(TEST).
+
+%% @hidden
+mean_test_() ->
+    ?TEST_ETUDE(fun mean/1,
+                "The mean of ~p is ~p",
+                [{6.0, [[7,2,9]]}]).
+
+-endif.
+
+
+%% @doc Compute the <em>standard derivation</em> of a `List' of numbers.
+-spec stdv(List :: [number(),...]) -> StandardDeviation :: float().
+stdv(List) ->
+    N = length(List),
+    {SumOfSquares, Sum} = lists:foldl(fun do_stdv/2, {0, 0}, List),
+    math:sqrt(((N * SumOfSquares) - (Sum * Sum)) / (N * (N - 1))).
+
+
+-ifdef(TEST).
+
+%% @hidden
+stdv_test_() ->
+    ?TEST_ETUDE(fun stdv/1,
+                "The standard deviation of ~p is ~p",
+                [{3.605551275463989, [[7,2,9]]}]).
+
+-endif.
+
+
 %%% ========================================================== [ Private Parts ]
 
 %% @doc Tail-recursive implementation of {@link minimum/1}.
@@ -105,6 +144,17 @@ do_maximum([NewCandidate|Tail], Candidate) when NewCandidate > Candidate ->
     do_maximum(Tail, NewCandidate);
 do_maximum([_Head|Tail], Candidate) ->
     do_maximum(Tail, Candidate).
+
+
+%% @hidden
+%% @equiv lists:sum(Numbers)
+sum(Numbers) ->
+    lists:foldl(fun(Number, Sum) -> Sum + Number end, 0, Numbers).
+
+
+%% @hidden
+do_stdv(Number, {SumOfSquares, Sum}) ->
+    {Number * Number + SumOfSquares, Sum + Number}.
 
 
 %%% ==================================================================== [ EOF ]
