@@ -35,7 +35,7 @@
 
 %%% Part One.
 %% @doc Return the list of males over 40 in `?PEOPLE'.
--spec males_over_40() -> [person($M)].
+-spec males_over_40() -> [person(77)].
 males_over_40() ->
     [ Person || {_Name,Gender,Age}=Person <- ?PEOPLE,
                 $M =:= Gender,

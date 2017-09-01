@@ -1,6 +1,6 @@
 @title etudes
 @author Eric Bailey
-@version 0.7.6.6
+@version 0.7.6.7
 
 @doc
 
