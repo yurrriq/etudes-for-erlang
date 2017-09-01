@@ -1,11 +1,11 @@
 %%% ============================================================== [ cards.erl ]
-%%% @doc Etudes for Erlang: 7-5
+%%% @doc Etudes for Erlang: 7-5, 7-6
 %%% @end
 %%% ==================================================================== [ EOH ]
 -module(cards).
 
 %% Public API.
--export([make_deck/0, show_deck/1]).
+-export([make_deck/0, show_deck/1, shuffle/1]).
 
 
 %% Types.
@@ -37,6 +37,26 @@ make_deck() ->
 show_deck(Deck) ->
     _ = [ io:format("~p~n", [Card]) || Card <- Deck ],
     ok.
+
+
+%%% ===================================== [ Etude 7-6: Explaining an Algorithm ]
+
+%% @doc The Fisher-Yates shuffle.
+%% @equiv do_shuffle(List, [])
+shuffle(List) ->
+    do_shuffle(List, []).
+
+
+%% @doc Shuffle `List' using the First-Yates method.
+%%
+%% If there's nothing left to shuffle, return the shuffled list.
+%%
+%% Otherwise, "strike" a random `Elem'ent from `List', prepend it to `Shuffled',
+%% shuffle what reamins of `List'. do_shuffle([], Shuffled) -> Shuffled;
+do_shuffle(List, Shuffled) ->
+    N = length(List),
+    {Leading, [Elem | Trailing]} = lists:split(rand:uniform(N) - 1, List),
+    do_shuffle(Leading ++ Trailing, [Elem | Shuffled]).
 
 
 %%% ==================================================================== [ EOF ]

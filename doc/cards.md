@@ -6,7 +6,7 @@
 * [Function Index](#index)
 * [Function Details](#functions)
 
-Etudes for Erlang: 7-5.
+Etudes for Erlang: 7-5, 7-6.
 
 <a name="types"></a>
 
@@ -52,12 +52,25 @@ values are represented by the first letter of their name, as an atom.
 ## Function Index ##
 
 
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#make_deck-0">make_deck/0</a></td><td>Generate a deck of <a href="#type-card">card</a>s.</td></tr><tr><td valign="top"><a href="#show_deck-1">show_deck/1</a></td><td>Pretty print a deck of <a href="#type-card">card</a>s.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#do_shuffle-2">do_shuffle/2*</a></td><td>Shuffle <code>List</code> using the First-Yates method.</td></tr><tr><td valign="top"><a href="#make_deck-0">make_deck/0</a></td><td>Generate a deck of <a href="#type-card">card</a>s.</td></tr><tr><td valign="top"><a href="#show_deck-1">show_deck/1</a></td><td>Pretty print a deck of <a href="#type-card">card</a>s.</td></tr><tr><td valign="top"><a href="#shuffle-1">shuffle/1</a></td><td>The Fisher-Yates shuffle.</td></tr></table>
 
 
 <a name="functions"></a>
 
 ## Function Details ##
+
+<a name="do_shuffle-2"></a>
+
+### do_shuffle/2 * ###
+
+`do_shuffle(List, Shuffled) -> any()`
+
+Shuffle `List` using the First-Yates method.
+
+If there's nothing left to shuffle, return the shuffled list.
+
+Otherwise, "strike" a random `Elem`ent from `List`, prepend it to `Shuffled`,
+shuffle what reamins of `List`. do_shuffle([], Shuffled) -> Shuffled;
 
 <a name="make_deck-0"></a>
 
@@ -80,4 +93,14 @@ show_deck(Deck::[<a href="#type-card">card()</a>]) -&gt; ok
 <br />
 
 Pretty print a deck of [card](#type-card)s.
+
+<a name="shuffle-1"></a>
+
+### shuffle/1 ###
+
+`shuffle(List) -> any()`
+
+Equivalent to [`do_shuffle(List, [])`](#do_shuffle-2).
+
+The Fisher-Yates shuffle.
 
