@@ -2,7 +2,7 @@
 
 # etudes #
 
-__Version:__ 0.7.4.6
+__Version:__ 0.7.5.6
 
 __Authors:__ Eric Bailey.
 
@@ -24,6 +24,7 @@ __Authors:__ Eric Bailey.
 <table width="100%" border="0" summary="list of modules">
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/ask_area.md" class="module">ask_area</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/calculus.md" class="module">calculus</a></td></tr>
+<tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/cards.md" class="module">cards</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/dates.md" class="module">dates</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/dijkstra.md" class="module">dijkstra</a></td></tr>
 <tr><td><a href="https://github.com/yurrriq/etudes-for-erlang/blob/develop/doc/geom.md" class="module">geom</a></td></tr>
