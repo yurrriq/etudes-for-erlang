@@ -1,4 +1,4 @@
 %% encoding: UTF-8
 {application,etudes}.
-{modules,[ask_area,calculus,dates,dijkstra,geom,non_fp,powers,roots,stats,
-          teeth]}.
+{modules,[ask_area,calculus,dates,dijkstra,geom,non_fp,people,powers,roots,
+          stats,teeth]}.

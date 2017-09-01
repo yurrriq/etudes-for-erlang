@@ -20,7 +20,7 @@
                              end
                              || Arg <- Args ],
               {iolist_to_binary(io_lib:format(Format, PrettyArgs ++ [Expected])),
-               ?_assertMatch(Expected, apply(Fun, Args))}
+               ?_assertEqual(Expected, apply(Fun, Args))}
           end
           || {Expected, Args} <- Cases]).
 -endif.

@@ -2,7 +2,7 @@
 
 # etudes #
 
-__Version:__ 0.7.1.6
+__Version:__ 0.7.2.6
 
 __Authors:__ Eric Bailey.
 
@@ -28,6 +28,7 @@ __Authors:__ Eric Bailey.
 <tr><td><a href="dijkstra.md" class="module">dijkstra</a></td></tr>
 <tr><td><a href="geom.md" class="module">geom</a></td></tr>
 <tr><td><a href="non_fp.md" class="module">non_fp</a></td></tr>
+<tr><td><a href="people.md" class="module">people</a></td></tr>
 <tr><td><a href="powers.md" class="module">powers</a></td></tr>
 <tr><td><a href="roots.md" class="module">roots</a></td></tr>
 <tr><td><a href="stats.md" class="module">stats</a></td></tr>
