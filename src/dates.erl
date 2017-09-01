@@ -13,7 +13,6 @@
 
 %%% ========================================= [ Etude 5-2: Using the re Module ]
 
-
 %% @doc Given a `String' of the form "YYYY-MM-DD" return the date `Parts'.
 %% ```
 %% [Year, Month, Day] = Parts.
@@ -81,6 +80,7 @@ julian_test_() ->
 %%% ========================================================== [ Private Parts ]
 
 %% NOTE: I can't, in good conscience, implement julian/5 as suggested...
+%% NOTE: Etude 7-4: Using lists:split/2 seems pointless.
 %% @hidden
 do_julian(_Year, 0, JulianDate) ->
     JulianDate;
